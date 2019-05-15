@@ -10,7 +10,7 @@ Please visit [posquit0/Awesome-CV](https://github.com/posquit0/Awesome-CV) for i
 ## Usage
 1. Build the image: ```docker build --tag awesome-cv .```
 2. Run the container interactively in your document directory: ```cd path/to/my_resume && docker run -it --mount src=$(pwd),dst=/doc,type=bind awesome-cv```
-3. From within the container, build your document: ```cd /doc && latexmk -xelatex my_resume.tex```
+3. From within the container, build your document: ```cd /doc && xelatex my_resume.tex```
 4. Find ```my_resume.pdf``` in your document directory.
 
 ## Troubleshooting
