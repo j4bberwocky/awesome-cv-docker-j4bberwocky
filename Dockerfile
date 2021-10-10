@@ -23,12 +23,41 @@ RUN echo "selected_scheme scheme-basic" >> /install-tl/basic.profile && \
 RUN /install-tl/install-tl -profile /install-tl/basic.profile && \
     rm --recursive --force /install-tl
 ENV PATH "/usr/local/texlive/installed/bin/x86_64-linux:${PATH}"
+#ENV PATH "/usr/local/texlive/bin/x86_64-linux:${PATH}"
+#ENV PATH=/usr/local/texlive/bin/x86_64-linuxmusl:$PATH
+#ENV PATH=/usr/local/texlive/2018/bin/x86_64-linux:$PATH
+
 
 # Install additional TeX Live dependencies.
-COPY ./tl-deps .
-RUN tlmgr install $(cat tl-deps) && \
-    rm tl-deps
-
+#COPY ./tl-deps .
+#RUN tlmgr install $(cat tl-deps) && \
+#   rm tl-deps
+RUN tlmgr update --self && \
+    tlmgr install \
+    latexmk \
+    collection-xetex \
+    enumitem \
+    environ \
+    etoolbox \
+    everysel \
+    filehook \
+    fontspec \
+    ifmtarg \
+    lm \
+    lm-math \
+    ms \
+    parskip \
+    pgf \
+    ragged2e \
+    setspace \
+    sourcesanspro \
+    tcolorbox \
+    trimspaces \
+    unicode-math \
+    xcolor \
+    xifthen \
+    xkeyval \
+    zapfding 
 
 #
 # Set up Awesome-CV.
